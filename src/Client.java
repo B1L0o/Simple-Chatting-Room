@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
+import javax.swing.JOptionPane;
+
 
 
 public class Client extends JFrame implements Runnable
@@ -20,7 +22,7 @@ public class Client extends JFrame implements Runnable
     private PrintWriter out;
     private JTextField textField = new JTextField(50);
     private JTextArea messageArea = new JTextArea(16, 50);
-    private String IP = "127.0.0.1";
+    private String IP = "";
     private int PORT = 9999;
 
     private static final Logger logger = Logger.getLogger(Client.class.getName());
@@ -46,6 +48,7 @@ public class Client extends JFrame implements Runnable
         add(textField, BorderLayout.SOUTH);
         add(new JScrollPane(messageArea), BorderLayout.CENTER);
         pack();
+        IP = JOptionPane.showInputDialog("Enter the IP address:");
 
         textField.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
