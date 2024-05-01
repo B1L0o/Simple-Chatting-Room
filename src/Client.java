@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.PortUnreachableException;
 import java.net.Socket;
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +17,8 @@ public class Client extends JFrame implements Runnable
     private PrintWriter out;
     private JTextField textField = new JTextField(50);
     private JTextArea messageArea = new JTextArea(16, 50);
+    private String IP = "127.0.0.1";
+    private int PORT = 9999;
 
 
     public Client(){
@@ -46,7 +49,7 @@ public class Client extends JFrame implements Runnable
 
     public void run() {
         try{
-            client = new Socket("127.0.0.1",9999);
+            client = new Socket(IP,PORT);
             out = new PrintWriter(client.getOutputStream(),true);
             in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 
