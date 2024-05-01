@@ -1,0 +1,4 @@
+Server started
+coucou sent: au revoir
+coucou left the chat by sending 'bye'
+hey left the chat by sending 'bye'

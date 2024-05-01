@@ -7,18 +7,44 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Logger;
+import java.util.logging.FileHandler;
+import java.util.logging.SimpleFormatter;
+import java.io.*;
+import java.net.*;
 
 public class Server implements Runnable {
-
-
+    
+    
+    
     private final ArrayList<ConnectionHandler> connections;
     private ServerSocket server;
     private boolean done;
     private ExecutorService pool;
-
+    private BufferedWriter logWriter;
+    
+    
     public Server() {
+
+        try {
+            logWriter = new BufferedWriter(new FileWriter("controller.txt", false));
+            logMessage("Server started");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        
         done = false;
         connections = new ArrayList<>();
+    }
+
+    private void logMessage(String message) {
+        try {
+            logWriter.write(message + "\n");
+            logWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void run() {
@@ -55,6 +81,7 @@ public class Server implements Runnable {
             for (ConnectionHandler ch : connections) {
                 ch.shutdown();
             }
+            logWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -80,13 +107,17 @@ public class Server implements Runnable {
                 String nickname = in.readLine();
                 System.out.println(nickname + " connected!");
                 broadcast(nickname + " joined the chat!");
+                logMessage(nickname + " joined the chat!");
                 String message;
                 while ((message = in.readLine()) != null) {
+                    
                     if (message.startsWith("bye")) {
+                        logMessage(nickname + " left the chat by sending 'bye'");
                         broadcast(nickname + " left the chat!");
                         shutdown();
                     }
                     else {
+                        logMessage(nickname + " sent: " + message);
                         broadcast(nickname + ": " + message);
                     }
                 }

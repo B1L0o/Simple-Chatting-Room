@@ -8,6 +8,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Logger;
+import java.util.logging.FileHandler;
+import java.util.logging.SimpleFormatter;
 
 
 public class Client extends JFrame implements Runnable
@@ -20,8 +23,22 @@ public class Client extends JFrame implements Runnable
     private String IP = "127.0.0.1";
     private int PORT = 9999;
 
+    private static final Logger logger = Logger.getLogger(Client.class.getName());
+    private FileHandler fh;
+
 
     public Client(){
+
+        try {
+            fh = new FileHandler("client.log", false);
+            logger.addHandler(fh);
+            SimpleFormatter formatter = new SimpleFormatter();
+            fh.setFormatter(formatter);
+            logger.info("Client started");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
         textField.setEditable(true);
         messageArea.setEditable(false);
         messageArea.setLineWrap(true);
@@ -56,10 +73,10 @@ public class Client extends JFrame implements Runnable
             String inMessage;
             while ((inMessage = in.readLine()) != null){
                 printMessage(inMessage);
-                System.out.println(inMessage);
             }
 
         }catch (IOException e){
+            logger.severe("Error in client: " + e.getMessage());
             shutdown();
         }
     }
@@ -67,6 +84,7 @@ public class Client extends JFrame implements Runnable
     public void printMessage(String line)
     {
         messageArea.append(line + "\n");
+        logger.info(line);
     }
 
     public void shutdown(){

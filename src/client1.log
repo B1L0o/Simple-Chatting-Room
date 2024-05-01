@@ -1,0 +1,44 @@
+avr. 30, 2024 6:38:27 PM Client <init>
+INFO: Client started
+avr. 30, 2024 6:38:28 PM Client printMessage
+INFO: Please enter a nickname: 
+avr. 30, 2024 6:38:36 PM Client <init>
+INFO: Client started
+avr. 30, 2024 6:38:36 PM Client printMessage
+INFO: Please enter a nickname: 
+avr. 30, 2024 6:38:48 PM Client printMessage
+INFO: Ro joined the chat!
+avr. 30, 2024 6:38:51 PM Client printMessage
+INFO: ba joined the chat!
+avr. 30, 2024 6:38:53 PM Client printMessage
+INFO: ba: ehllo
+avr. 30, 2024 6:38:55 PM Client printMessage
+INFO: Ro: hello
+avr. 30, 2024 6:38:56 PM Client printMessage
+INFO: Ro: au revoir
+avr. 30, 2024 6:38:57 PM Client printMessage
+INFO: Ro left the chat!
+avr. 30, 2024 6:38:59 PM Client printMessage
+INFO: ba: salut 
+avr. 30, 2024 6:39:46 PM Client <init>
+INFO: Client started
+avr. 30, 2024 6:39:47 PM Client printMessage
+INFO: Please enter a nickname: 
+avr. 30, 2024 6:39:49 PM Client printMessage
+INFO: h joined the chat!
+avr. 30, 2024 6:39:50 PM Client printMessage
+INFO: h: hey
+avr. 30, 2024 6:39:56 PM Client printMessage
+INFO: o joined the chat!
+avr. 30, 2024 6:39:58 PM Client printMessage
+INFO: o: Ko
+avr. 30, 2024 6:40:02 PM Client printMessage
+INFO: o: ça va ?
+avr. 30, 2024 6:40:04 PM Client printMessage
+INFO: h: oui
+avr. 30, 2024 6:40:06 PM Client printMessage
+INFO: h: au revoir
+avr. 30, 2024 6:40:06 PM Client printMessage
+INFO: h: bue
+avr. 30, 2024 6:40:08 PM Client printMessage
+INFO: h left the chat!
